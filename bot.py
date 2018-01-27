@@ -9,6 +9,7 @@ class bot:
     channel = None
 
     def __init__(self, __host, __port, __username, __password, __channel, __timeout):
+        self.length= 4096
         self.host = __host
         self.port = __port
         self.username = __username
@@ -29,10 +30,10 @@ class bot:
             return False
 
     def login(self):
-        self.sendMessage('PASS' + self.password)
-        self.sendMessage('NICK' + self.username)
-        self.sendMessage('USER' + self.username)
-        self.sendMessage('JOIN #' + self.channel)
+        self.sendMessage('PASS ' + self.password + '\r\n')
+        self.sendMessage('NICK ' + self.username + '\r\n')
+        self.sendMessage('USER ' + self.username + '\r\n')
+        self.sendMessage('JOIN #' + self.channel + '\r\n')
 
     def sendChatMessage(self, message, incrementMessages=True):
         self.sendMessage('PRIVMSG #' + self.channel + ' :' + message)
@@ -40,5 +41,7 @@ class bot:
         if incrementMessages:
             self.sentMessages += 1
 
-    def getResponse(self.length=4096):
-        return self.__socket.recv(length).decode()
+    def getResponse(self, length=4096):
+        message = self.__socket.recv(length).decode()
+        print(message)
+        return message

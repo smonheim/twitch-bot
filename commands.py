@@ -23,6 +23,9 @@ class commands:
         self.commands.set("DEFAULT","reply","0")
         self.commands.set("DEFAULT","period","-1")
         self.commands.set("DEFAULT","adminOnly","0")
+        self.commands.set("DEFAULT","firstValue","0")
+        self.commands.set("DEFAULT","secondValue","0")
+        self.commands.set("DEFAULT","possibleAnswers","")
 
     def generateDefaultCommands(self):
         self.commands.add_section("cmdPing")

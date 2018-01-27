@@ -1,5 +1,4 @@
 import configparser
-import config.py
 import os
 
 class config:
@@ -25,6 +24,7 @@ class config:
             self.config.get('chat', 'botAdmins')
             self.config.get('debug', 'showServerOutput')
             self.config.get('debug', 'showDebugMessages')
+            print(self.config.get('auth', 'username'))
             return True
         except:
             return False
